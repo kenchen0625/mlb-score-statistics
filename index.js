@@ -16,7 +16,7 @@ async function main() {
   const scoreDataArray = rawScoreData.split("\n")
   scoreDataArray.splice(0, 1)
   for (const scoreData of scoreDataArray) {
-    const score = scoreData.split(",")[1]
+    const score = scoreData.split(",")[2]
     score % 2 === 0 ? result.even++ : result.odd++
   }
   fs.writeFileSync(statisticFilePath, `單,${result.odd}\n`)
@@ -24,7 +24,7 @@ async function main() {
 }
 
 async function writeScoreData() {
-  fs.writeFileSync(csvPath, "date,totalScore\n")
+  fs.writeFileSync(csvPath, "日期,隊伍,總分\n")
 
   const startSeasonDate = new Date(2023, 2, 31)
   const endSeasonDate = new Date(2023, 9, 2)
